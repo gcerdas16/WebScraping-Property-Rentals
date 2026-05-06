@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+cache/
+*.log
+fb-session.json
+fb-playwright-session.json
+test-results.json

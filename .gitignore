@@ -1,8 +1,55 @@
+# === Dependencies ===
 node_modules/
+
+# === Build outputs ===
+.next/
 dist/
+out/
+build/
+
+# === Environment / secrets ===
 .env
-cache/
+.env.local
+.env.*.local
+
+# === Facebook session cookies (NEVER COMMIT) ===
+**/fb-session.json
+**/fb-playwright-session.json
+
+# === Logs ===
 *.log
-fb-session.json
-fb-playwright-session.json
+npm-debug.log*
+
+# === IDE / OS ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# === Claude Code ephemeral / personal config ===
+.superpowers/
+.claude/
+
+# === External reference repos (cloned from GitHub for inspiration, not project code) ===
+/repos/
+cr-market-scraper/AutoFlipr/
+cr-market-scraper/Facebook-marketplace-bot/
+cr-market-scraper/ITIS-4390-Team-6-Facebook-Marketplace-Redesign-Project/
+cr-market-scraper/SteveMan-fb-scraper/
+cr-market-scraper/facebook-marketplace-ai-lister/
+cr-market-scraper/facebook-marketplace-listing-poster-automation/
+cr-market-scraper/fb-cli/
+cr-market-scraper/fb-marketplace-alerts/
+cr-market-scraper/marketPlace/
+cr-market-scraper/marketquad/
+cr-market-scraper/proxiesx-services/
+cr-market-scraper/vavaviper-fb-search/
+
+# === Data exports (regenerated from DB, not source) ===
+listings-export-*.csv
+
+# === Misc ===
+*.tmp
+.cache/
+cache/
 test-results.json
