@@ -48,18 +48,23 @@ Sin cambios. El scraper sigue trayendo todos los tipos de propiedad. El filtro d
 
 ## 3. Dirección visual
 
-**Estilo:** Editorial con acentos bold (Opción 3 del brainstorming).
-- **Base:** fondo blanco/crema editorial, layouts asimétricos, tipografía protagonista
-- **Acentos bold:** negro profundo + un acento eléctrico (color exacto a decidir: lima / amarillo / naranja eléctrico) usados en CTAs, badges, números destacados, secciones de impacto
+**Estilo:** Editorial con acentos bold (Opción 3 del brainstorming), variante hero Stat-Driven (B2).
 
-**Tipografía (a confirmar al implementar):**
-- **Serif headlines:** Fraunces o DM Serif Display
-- **Sans body:** Inter o DM Sans
+### Paleta
+- **Fondo:** `#fafaf7` (crema editorial) y `#ffffff`
+- **Texto principal:** `#1a1a1a` (negro profundo)
+- **Texto secundario:** `#4a4a4a`
+- **Acento bold:** `#84cc16` (lima eléctrico) — usado en el punto del "496.", badges de "Hoy/Hace Xh", botón secundario WhatsApp, hover states, accent en section labels
 
-**Animaciones:**
+### Tipografía
+- **`DM Serif Display`** — solo para el número gigante del hero (el "496"). Display heavy serif.
+- **`Fraunces`** (variable serif) — section titles, subheads italic ("propiedades curadas en Costa Rica."), card headlines
+- **`Inter`** (sans) — body, UI, labels, botones, metadata
+
+### Animaciones
 - **framer-motion** — animaciones component-level (hover en cards, page transitions, list stagger en grids, fade-in de secciones)
-- **GSAP** — animaciones pesadas: hero con text-reveal cinematic, scroll-triggered story-telling editorial, timelines complejos, ScrollTrigger para secciones que se revelan al scroll
-- **NO anime.js** — redundante con GSAP, no aporta capacidades adicionales
+- **GSAP** — animaciones pesadas: hero text-reveal cinematic del "496", scroll-triggered en sección "Recién hoy", timelines complejos
+- **NO anime.js** — redundante con GSAP
 
 ---
 
@@ -67,12 +72,32 @@ Sin cambios. El scraper sigue trayendo todos los tipos de propiedad. El filtro d
 
 | Ruta | Estado | Notas |
 |---|---|---|
-| `/` | Rediseño completo | Hero editorial + "Recién listados hoy" + "Por ciudad" + CTA WhatsApp |
+| `/` | Rediseño completo | Hero Stat-Driven (B2) + sección "Recién hoy" + "Por ciudad" + CTA WhatsApp |
 | `/listings` | Rediseño | Filtros + toggle **Lista \| Mapa** + grid + paginación. Solo casas/apartamentos |
 | `/listings/[source_id]` | Rediseño | Galería + info + favorito + mini-mapa + listings similares |
 | `/nuevos` | Nueva | Feed cronológico de últimos 7 días con timestamps |
 | `/favoritos` | Nueva | Listings marcados como favoritos (localStorage) |
 | `/about`, `/contact` | NO en V1 | Quedan 404 |
+
+### Estructura del hero `/` (B2 — Stat-Driven)
+
+**Hero (limpio, sin imágenes):**
+- Label "CR Market" pequeño en uppercase
+- "496." en DM Serif Display gigante (~130-150px), el punto en lima `#84cc16`
+- "propiedades curadas en Costa Rica." en Fraunces italic, ~24-28px
+- Párrafo subhead en Inter ~14-15px: "Sin scroll en Facebook. Sin calculadora para dólares. Solo casas y apartamentos en alquiler — recién listados primero."
+- Dos CTAs: `[Ver propiedades →]` (negro) + `[Canal WhatsApp]` (lima)
+- El número 496 es dinámico: cuenta de listings activos en DB, se actualiza en cada render
+
+**Sección inmediatamente debajo: "Recién hoy"**
+- Section label "RECIÉN HOY" en lima eléctrico, uppercase, letter-spacing alto
+- Section title en Fraunces serif: "Listadas hace menos de 24h"
+- Link "Ver todas →" alineado a la derecha
+- Grid 3x2 de 6 photo cards, cada una con:
+  - Foto del listing (de Cloudinary)
+  - Badge timestamp en lima ("Hace 2h", "Hoy", etc.)
+  - Precio + ubicación overlay sobre gradiente
+  - Click navega al detalle
 
 ---
 
@@ -173,14 +198,11 @@ El v1 archivado queda intacto como referencia y safety net. Si V2 se descarrila,
 
 ## 10. Decisiones aún abiertas (para resolver al implementar)
 
-- Color de acento exacto (lima vs amarillo vs naranja eléctrico)
-- Typeface serif final (Fraunces vs DM Serif Display)
-- Typeface sans final (Inter vs DM Sans)
-- Hero estático vs carousel
 - Set exacto de `property_type_ai` que califican como "casa o apartamento"
 - URL del canal de WhatsApp (la provee el usuario)
 - Si timestamp usa `created_at` o `last_seen_at`
 - Tile provider de Leaflet (OpenStreetMap default vs CartoDB Positron para look más editorial)
+- Curaduría de los 6 listings que aparecen en sección "Recién hoy" del home — orden por `created_at` desc, pero filtrar manualmente los que tengan fotos malas para no romper el hero
 
 ---
 
