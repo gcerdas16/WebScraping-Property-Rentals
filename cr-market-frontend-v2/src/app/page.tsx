@@ -1,4 +1,4 @@
-import { Hero } from '@/components/home/Hero'
+import { HomeIntro } from '@/components/home/HomeIntro'
 import { RecienHoy } from '@/components/home/RecienHoy'
 import { Ciudades } from '@/components/home/Ciudades'
 import { WhatsAppCTA } from '@/components/home/WhatsAppCTA'
@@ -8,7 +8,7 @@ export const revalidate = 300 // ISR: revalidate every 5 min
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <HomeIntro />
       <RecienHoy />
       <Ciudades />
       <WhatsAppCTA />

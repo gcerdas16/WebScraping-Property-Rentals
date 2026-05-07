@@ -6,29 +6,29 @@ export async function Hero() {
 
   return (
     <section className="bg-cream">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-16 pb-12 md:pt-24 md:pb-16">
-        <div className="text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-bold text-ink mb-3">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-7 pb-5">
+        <div className="text-[10px] tracking-[0.4em] uppercase font-bold text-ink mb-2">
           CR Market
         </div>
 
-        <h1 className="font-display text-[100px] md:text-[170px] leading-[0.85] tracking-mega text-ink">
+        <h1 className="font-display text-[80px] md:text-[110px] leading-[0.85] tracking-mega text-ink">
           {count}
           <span className="text-accent">.</span>
         </h1>
 
-        <div className="font-display italic text-2xl md:text-[28px] mt-2 leading-tight text-ink">
-          propiedades curadas en Costa Rica.
+        <div className="font-display italic text-xl md:text-[22px] mt-1 leading-[1.05] text-ink">
+          propiedades escogidas en Costa Rica.
         </div>
 
-        <p className="mt-6 max-w-xl text-sm md:text-base leading-relaxed text-muted">
-          Sin scroll infinito en Facebook. Sin calculadora para convertir dólares. Sin estafadores.
-          Solo casas y apartamentos en alquiler — recién listados primero.
+        <p className="mt-3.5 max-w-[520px] text-[13px] leading-[1.55] text-muted">
+          En colones, bien filtradas. Lo nuevo te llega al WhatsApp — no tenés que pasar horas en
+          Facebook.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-4 flex flex-wrap gap-2.5">
           <a
             href="/listings"
-            className="bg-ink text-cream px-7 py-3.5 text-sm font-semibold tracking-wide hover:bg-muted transition-colors"
+            className="bg-ink text-cream px-[26px] py-[13px] text-[13px] font-semibold tracking-wide hover:bg-muted transition-colors"
           >
             Ver propiedades →
           </a>
@@ -36,7 +36,7 @@ export async function Hero() {
             href={WHATSAPP_CHANNEL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-accent text-ink px-7 py-3.5 text-sm font-bold tracking-wide hover:bg-accent/90 transition-colors"
+            className="bg-accent text-ink px-[26px] py-[13px] text-[13px] font-bold tracking-wide hover:bg-accent/90 transition-colors"
           >
             Canal WhatsApp
           </a>

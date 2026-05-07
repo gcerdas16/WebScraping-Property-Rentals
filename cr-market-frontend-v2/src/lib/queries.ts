@@ -19,13 +19,13 @@ export async function getActiveListingsCount(): Promise<number> {
 }
 
 /** Most recent listings for the "Recién hoy" home section. */
-export async function getRecentListings(limit = 6): Promise<Listing[]> {
+export async function getRecentListings(limit = 6, offset = 0): Promise<Listing[]> {
   const { data, error } = await supabase
     .from('listings')
     .select('*')
     .in('property_type_ai', RENTAL_TYPES)
     .order('created_at', { ascending: false })
-    .limit(limit)
+    .range(offset, offset + limit - 1)
 
   if (error) {
     console.error('getRecentListings:', error)
